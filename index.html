@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="Simple Reading List Website">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <link rel="icon" type="image/png" href="./icons/icon32x32.png">
+    <link rel="stylesheet" href="style.css">
+    <title>Reading List</title>
+</head>
+
+<body>
+    <!-- Main section -->
+    <div class="center">
+        <h2 style="text-align: center;">Reading List</h2>
+        <p style="text-align: center;">Made simply to create a reading list.</p>
+        <a href="https://github.com/Lucifer25x/reading-list">Source Code</a>
+
+        <br>
+        <br>
+        <hr>
+
+        <br>
+
+        <button id="add-book">Add Book</button>
+        <button id="edit-list">Edit List</button>
+
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Writer</th>
+                <th>Page count</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="book-table">
+        </tbody>
+    </table>
+
+    <!-- Add new Book -->
+    <div class="add-book hide">
+        <h2>Add Book</h2>
+        <form id="add-new-book">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            <label for="writer">Writer</label>
+            <input type="text" id="writer" name="writer" required>
+            <label for="page-count">Page count</label>
+            <input type="text" id="page" name="page-count" required>
+            <label for="status">Status</label>
+            <select id="status">
+                <option value="Finished">Finished</option>
+                <option value="Reading">Reading</option>
+                <option value="Not Started">Not Started</option>
+            </select>
+            <br>
+            <hr>
+            <br>
+            <div class="center">
+                <div class="row">
+                    <button type="submit">Add</button>
+                    <button id="close-form">Close</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Edit List -->
+    <div class="edit-list hide">
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody id="edit-list-table">
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class="row">
+            <button id="remove-all">Remove All</button>
+            <button id="close-list">Close</button>
+        </div>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
