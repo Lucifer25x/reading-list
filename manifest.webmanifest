@@ -1,0 +1,21 @@
+{
+    "name": "Reading List App",
+    "short_name": "Reading List",
+    "description": "A simple reading list app",
+    "icons": [
+        {
+            "src": "icons/icon32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/icon512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "./index.html",
+    "theme_color": "#211e1e",
+    "background_color": "#302929",
+    "display": "standalone"
+}
