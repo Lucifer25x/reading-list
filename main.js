@@ -19,26 +19,26 @@ function loadBookTable() {
     parsedData.forEach(book => {
         const tr = document.createElement('tr');
         const nameTd = document.createElement('td');
-        const writerTd = document.createElement('td');
+        const authorTd = document.createElement('td');
         const pageTd = document.createElement('td');
         const statusTd = document.createElement('td');
         nameTd.innerText = book.name;
-        writerTd.innerText = book.writer;
+        authorTd.innerText = book.author;
         pageTd.innerText = book.page;
         statusTd.innerText = book.status;
         tr.appendChild(nameTd);
-        tr.appendChild(writerTd);
+        tr.appendChild(authorTd);
         tr.appendChild(pageTd);
         tr.appendChild(statusTd);
         bookTable.appendChild(tr);
     })
 }
 
-function addBook(name, writer, page, status, id) {
+function addBook({ name, author, page, status, id }) {
     const book = {
         id: id,
         name: name,
-        writer: writer,
+        author: author,
         page: page,
         status: status
     }
@@ -83,6 +83,18 @@ function loadEditList() {
         const btn = document.createElement('button');
         btn.innerText = 'Remove';
         nameTd.innerText = book.name;
+        nameTd.contentEditable = true;
+        nameTd.addEventListener('keyup', e => {
+            const bookList = window.localStorage.getItem('bookList');
+            const parsedData = JSON.parse(bookList) || [];
+            parsedData.forEach(el => {
+                if (el.id === book.id) {
+                    el.name = e.target.innerText;
+                };
+            });
+            window.localStorage.setItem('bookList', JSON.stringify(parsedData));
+            loadBookTable();
+        })
         select.value = book.status;
         statusTd.appendChild(select);
         tr.appendChild(nameTd);
@@ -122,11 +134,17 @@ closeFormButton.addEventListener('click', () => {
 addNewBook.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = addNewBook.querySelector('#name').value;
-    const writer = addNewBook.querySelector('#writer').value;
+    const author = addNewBook.querySelector('#author').value;
     const page = addNewBook.querySelector('#page').value;
     const status = addNewBook.querySelector('#status').value;
     const id = Date.now();
-    addBook(name, writer, page, status, id);
+    addBook({
+        name: name, 
+        author: author,
+        page: page,
+        status: status, 
+        id: id
+    });
     addBookForm.classList.add('hide');
 })
 
