@@ -13,5 +13,6 @@
 * Remove Book
 * Delete All
 * Use local storage for saving books
+* Edit Book Title
 
 ### Uses local storage and water.css
